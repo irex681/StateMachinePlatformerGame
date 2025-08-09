@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://24v2qqeo2ms5"]
+[gd_scene load_steps=14 format=3 uid="uid://24v2qqeo2ms5"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_wh5ld"]
 [ext_resource type="Script" path="res://scripts/states/StateMachine.gd" id="3_016gb"]
@@ -10,18 +10,22 @@
 [ext_resource type="Script" path="res://scripts/states/player_states/wall_hanging.gd" id="8_7eewq"]
 [ext_resource type="Script" path="res://scripts/states/player_states/double_falling.gd" id="9_tgaoa"]
 [ext_resource type="Script" path="res://scripts/states/player_states/wall_jumping.gd" id="11_iirv6"]
-[ext_resource type="Texture2D" uid="uid://f3jxn5b7p6nq" path="res://CharacterSprite.png" id="11_k8hen"]
+[ext_resource type="Texture2D" uid="uid://f3jxn5b7p6nq" path="res://assets/CharacterSprite.png" id="11_k8hen"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7edl0"]
+size = Vector2(10, 14.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2v4o1"]
 size = Vector2(10, 15)
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 6
+collision_mask = 2
 script = ExtResource("1_wh5ld")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.25)
 shape = SubResource("RectangleShape2D_7edl0")
 metadata/_edit_lock_ = true
 
@@ -74,4 +78,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_2v4o1")
+debug_color = Color(0.553681, 0.512264, 0.631232, 0.42)
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

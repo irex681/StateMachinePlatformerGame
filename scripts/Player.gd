@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 		
 		var celllocation: Vector2 = collision.get_position()
 		
-		print(celllocation)
+		#print(celllocation)
 		
 		
 		
@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 		
 		var cellhit: Vector2i = level.local_to_map(celllocation)	
 		
-		print(is_on_wall(),get_wall_normal())
+		#print(is_on_wall(),get_wall_normal())
 		
 			
 		if is_on_wall():
@@ -49,12 +49,20 @@ func _physics_process(delta: float) -> void:
 		
 		get_parent().queue_redraw()
 		
-		if tilecollided.get_cell_atlas_coords(cellhit) == Vector2i(0,0):
-			tilecollided.set_cell(cellhit,0,Vector2i(1,0)) # replacing the hit tile
-		if tilecollided.get_cell_atlas_coords(cellhit) == Vector2i(1,1):
-			tilecollided.set_cell(cellhit,0,Vector2i(2,0))
+		#if tilecollided.get_cell_atlas_coords(cellhit) == Vector2i(0,0):
+			#tilecollided.set_cell(cellhit,0,Vector2i(1,0)) # replacing the hit tile
+		#if tilecollided.get_cell_atlas_coords(cellhit) == Vector2i(1,1):
+			#tilecollided.set_cell(cellhit,0,Vector2i(2,0))
 		
-		var cellhitdata: TileData = level.get_cell_tile_data(cellhit)
-		if cellhitdata !=null:
-			if (cellhitdata.get_custom_data("onTouchLose")):
-				emit_signal("touching_red")
+		#var cellhitdata: TileData = level.get_cell_tile_data(cellhit)
+		#if cellhitdata !=null:
+			#if (cellhitdata.get_custom_data("onTouchLose")):
+				#emit_signal("touching_red")
+				
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	
+	print("touching red")
+	emit_signal("touching_red")
+	pass # Replace with function body.

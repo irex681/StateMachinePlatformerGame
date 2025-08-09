@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g4yy1yaxxhhp"
-path="res://.godot/imported/Red Text.png-c4d91aeab29a4fabf62c834e747becec.ctex"
+uid="uid://juli58lk2sbo"
+path="res://.godot/imported/PathSprite.png-c17e88c7b4fe0208355b5016e1962f7b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Red Text.png"
-dest_files=["res://.godot/imported/Red Text.png-c4d91aeab29a4fabf62c834e747becec.ctex"]
+source_file="res://assets/PathSprite.png"
+dest_files=["res://.godot/imported/PathSprite.png-c17e88c7b4fe0208355b5016e1962f7b.ctex"]
 
 [params]
 
