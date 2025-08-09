@@ -1,0 +1,53 @@
+[gd_scene load_steps=12 format=3 uid="uid://24v2qqeo2ms5"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_wh5ld"]
+[ext_resource type="Texture2D" uid="uid://byvcl3br7w5n1" path="res://icon.svg" id="2_ctonx"]
+[ext_resource type="Script" path="res://scripts/states/StateMachine.gd" id="3_016gb"]
+[ext_resource type="Script" path="res://scripts/states/player_states/idle.gd" id="4_sah12"]
+[ext_resource type="Script" path="res://scripts/states/player_states/running.gd" id="5_majxv"]
+[ext_resource type="Script" path="res://scripts/states/player_states/jumping.gd" id="6_6yvcn"]
+[ext_resource type="Script" path="res://scripts/states/player_states/falling.gd" id="7_pi2eq"]
+[ext_resource type="Script" path="res://scripts/states/player_states/double_jumping.gd" id="7_yqlm6"]
+[ext_resource type="Script" path="res://scripts/states/player_states/wall_hanging.gd" id="8_7eewq"]
+[ext_resource type="Script" path="res://scripts/states/player_states/double_falling.gd" id="9_tgaoa"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5f5o3"]
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 6
+script = ExtResource("1_wh5ld")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_5f5o3")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5.96046e-07, 0.6)
+scale = Vector2(0.15625, 0.209375)
+texture = ExtResource("2_ctonx")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_016gb")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_sah12")
+
+[node name="Running" type="Node" parent="StateMachine"]
+script = ExtResource("5_majxv")
+
+[node name="Jumping" type="Node" parent="StateMachine"]
+script = ExtResource("6_6yvcn")
+
+[node name="DoubleJumping" type="Node" parent="StateMachine"]
+script = ExtResource("7_yqlm6")
+
+[node name="Falling" type="Node" parent="StateMachine"]
+script = ExtResource("7_pi2eq")
+
+[node name="DoubleFalling" type="Node" parent="StateMachine"]
+script = ExtResource("9_tgaoa")
+
+[node name="WallHanging" type="Node" parent="StateMachine"]
+script = ExtResource("8_7eewq")

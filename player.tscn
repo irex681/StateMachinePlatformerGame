@@ -1,0 +1,77 @@
+[gd_scene load_steps=13 format=3 uid="uid://24v2qqeo2ms5"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_wh5ld"]
+[ext_resource type="Script" path="res://scripts/states/StateMachine.gd" id="3_016gb"]
+[ext_resource type="Script" path="res://scripts/states/player_states/idle.gd" id="4_sah12"]
+[ext_resource type="Script" path="res://scripts/states/player_states/running.gd" id="5_majxv"]
+[ext_resource type="Script" path="res://scripts/states/player_states/jumping.gd" id="6_6yvcn"]
+[ext_resource type="Script" path="res://scripts/states/player_states/falling.gd" id="7_pi2eq"]
+[ext_resource type="Script" path="res://scripts/states/player_states/double_jumping.gd" id="7_yqlm6"]
+[ext_resource type="Script" path="res://scripts/states/player_states/wall_hanging.gd" id="8_7eewq"]
+[ext_resource type="Script" path="res://scripts/states/player_states/double_falling.gd" id="9_tgaoa"]
+[ext_resource type="Script" path="res://scripts/states/player_states/wall_jumping.gd" id="11_iirv6"]
+[ext_resource type="Texture2D" uid="uid://f3jxn5b7p6nq" path="res://CharacterSprite.png" id="11_k8hen"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7edl0"]
+size = Vector2(10, 15)
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 6
+script = ExtResource("1_wh5ld")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7edl0")
+metadata/_edit_lock_ = true
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
+script = ExtResource("3_016gb")
+start_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_sah12")
+
+[node name="Running" type="Node" parent="StateMachine"]
+script = ExtResource("5_majxv")
+
+[node name="Jumping" type="Node" parent="StateMachine"]
+script = ExtResource("6_6yvcn")
+
+[node name="DoubleJumping" type="Node" parent="StateMachine"]
+script = ExtResource("7_yqlm6")
+
+[node name="Falling" type="Node" parent="StateMachine"]
+script = ExtResource("7_pi2eq")
+
+[node name="DoubleFalling" type="Node" parent="StateMachine"]
+script = ExtResource("9_tgaoa")
+
+[node name="WallHanging" type="Node" parent="StateMachine"]
+script = ExtResource("8_7eewq")
+
+[node name="WallJumping" type="Node" parent="StateMachine"]
+script = ExtResource("11_iirv6")
+
+[node name="CharacterSprite" type="Sprite2D" parent="."]
+position = Vector2(-1.19209e-07, 0)
+scale = Vector2(0.04, 0.039)
+texture = ExtResource("11_k8hen")
+
+[node name="Statelabel" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+theme_override_font_sizes/font_size = 35
+text = "States"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
