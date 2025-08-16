@@ -7,14 +7,14 @@ extends Node2D
 func _ready() -> void:
 
 	player.connect("touching_red", respawn_player)
+	player.connect("checkpoint", new_checkpoint)
 	player.position = player_spawn_point.position
 
 func respawn_player():
 	player.position = player_spawn_point.position
 	
-
-	
-
+func new_checkpoint():
+	player_spawn_point.position = player.position
 
 func _draw() -> void:
 	draw_circle($Player.celllocationfordraw, 12, Color.DARK_BLUE)

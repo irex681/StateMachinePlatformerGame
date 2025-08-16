@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://b7425c4umpxex"]
+[gd_scene load_steps=12 format=4 uid="uid://b7425c4umpxex"]
 
 [ext_resource type="Script" path="res://main_level.gd" id="1_hfk4s"]
 [ext_resource type="Texture2D" uid="uid://dgq8n52w2q6xr" path="res://assets/Tileset.png" id="1_oy6l7"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://g4yy1yaxxhhp" path="res://assets/Red Text.png" id="6_v0r3t"]
 [ext_resource type="Texture2D" uid="uid://juli58lk2sbo" path="res://assets/PathSprite.png" id="7_pf0fc"]
 [ext_resource type="PackedScene" uid="uid://bh6k5rnje35mi" path="res://Redbox.tscn" id="8_cclg8"]
+[ext_resource type="PackedScene" uid="uid://cojsm7g3o3wei" path="res://Checkpoint.tscn" id="8_noek3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ici6q"]
 texture = ExtResource("1_oy6l7")
@@ -70,7 +71,15 @@ position = Vector2(0, -122)
 level = NodePath("../TileMapLayer")
 
 [node name="PlayerSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(-4, -49)
+position = Vector2(-13, -49)
+
+[node name="Checkpoint1" parent="." instance=ExtResource("8_noek3")]
+position = Vector2(1187, 1700)
+scale = Vector2(0.223831, 0.223831)
+
+[node name="Checkpoint2" parent="." instance=ExtResource("8_noek3")]
+position = Vector2(2144, 1141)
+scale = Vector2(0.223831, 0.223831)
 
 [node name="WinText" type="Sprite2D" parent="."]
 position = Vector2(3015, 1409)
@@ -344,7 +353,7 @@ scale = Vector2(2.40055, 11.9428)
 
 [node name="Area2D18" parent="." instance=ExtResource("8_cclg8")]
 position = Vector2(1048, 1017)
-scale = Vector2(2.40055, 3.7828)
+scale = Vector2(2.40055, 3.90281)
 
 [node name="Area2D19" parent="." instance=ExtResource("8_cclg8")]
 position = Vector2(1032, 1099)

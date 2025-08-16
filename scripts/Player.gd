@@ -14,6 +14,7 @@ var x_velocity: float
 @onready var statelabel: Label = $Statelabel
 
 signal touching_red
+signal checkpoint
 
 var collisionpos: Vector2
 var celllocationfordraw: Vector2
@@ -63,6 +64,11 @@ func _physics_process(delta: float) -> void:
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	
-	print("touching red")
-	emit_signal("touching_red")
+	if (area.collision_layer == 4):
+		emit_signal("touching_red")
+	if (area.collision_layer == 8):
+		emit_signal("checkpoint")
+		
+		
+	
 	pass # Replace with function body.

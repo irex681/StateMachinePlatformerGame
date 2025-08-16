@@ -1,0 +1,94 @@
+[gd_scene load_steps=3 format=3 uid="uid://cojsm7g3o3wei"]
+
+[ext_resource type="Script" path="res://scripts/checkpoint.gd" id="1_00g1a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ad2dl"]
+size = Vector2(224.5, 255)
+
+[node name="Checkpoint" type="Node2D"]
+position = Vector2(258, 13)
+script = ExtResource("1_00g1a")
+
+[node name="Node" type="Node2D" parent="."]
+position = Vector2(-258, -13)
+
+[node name="ColorRect5" type="ColorRect" parent="Node"]
+offset_left = 80.0
+offset_top = 40.0
+offset_right = 120.0
+offset_bottom = 80.0
+rotation = -1.56764
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect6" type="ColorRect" parent="Node"]
+offset_top = 40.0
+offset_right = 40.0
+offset_bottom = 80.0
+rotation = -1.56764
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect7" type="ColorRect" parent="Node"]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 80.0
+offset_bottom = 80.0
+rotation = -1.56764
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect8" type="ColorRect" parent="Node"]
+offset_left = 120.0
+offset_top = 40.0
+offset_right = 160.0
+offset_bottom = 80.0
+rotation = -1.56764
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Node2" type="Node2D" parent="."]
+position = Vector2(-98, 66)
+rotation = -3.14
+
+[node name="ColorRect" type="ColorRect" parent="Node2"]
+offset_left = 80.0
+offset_right = 120.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="Node2"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="Node2"]
+offset_left = 40.0
+offset_right = 80.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect4" type="ColorRect" parent="Node2"]
+offset_left = 120.0
+offset_right = 160.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+offset_left = -258.0
+offset_top = -13.0
+offset_right = -234.0
+offset_bottom = 200.0
+color = Color(0.08, 0.05892, 0.0392, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-557, -98)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(382, 178)
+shape = SubResource("RectangleShape2D_ad2dl")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
